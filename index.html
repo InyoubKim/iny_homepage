@@ -224,7 +224,9 @@
   }
   .filter-btn.active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
   .pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
-  .pf-card{background:var(--paper);padding:28px 26px;min-height:172px;display:flex;flex-direction:column;justify-content:space-between;}
+  .pf-card{background:var(--paper);padding:28px 26px;min-height:172px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;transition:background-color .2s ease;}
+  .pf-card:hover{background:var(--paper-deep);}
+  .pf-card:hover h4{color:var(--gold-deep);}
   .pf-card .top{display:flex;justify-content:space-between;font-size:12px;color:var(--gold-deep);letter-spacing:0.02em;margin-bottom:18px;}
   .pf-card h4{font-family:'Noto Serif KR',serif;font-size:16.5px;font-weight:600;line-height:1.45;color:var(--ink);}
   .pf-card .cat{margin-top:14px;font-size:12px;color:var(--muted);}
@@ -305,6 +307,15 @@
   .f-row input:focus, .f-row textarea:focus{outline:none;border-color:var(--gold);}
   .modal-note{font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6;}
   @media(max-width:480px){.f-row.two{grid-template-columns:1fr;}}
+
+  /* project detail modal */
+  .detail-box h3{font-size:26px;margin-top:10px;margin-bottom:4px;line-height:1.4;}
+  .detail-en{font-size:13px;color:var(--muted);font-style:italic;margin-bottom:22px;}
+  .detail-rows{border-top:1px solid var(--line);margin-top:6px;}
+  .detail-row{display:flex;gap:18px;padding:14px 0;border-bottom:1px solid var(--line);font-size:14.5px;}
+  .detail-row .k{width:84px;flex-shrink:0;color:var(--muted);font-size:12.5px;letter-spacing:0.03em;padding-top:2px;}
+  .detail-row .v{color:var(--ink);line-height:1.6;}
+  .detail-source{font-size:11.5px;color:var(--muted);margin-top:16px;line-height:1.6;}
 
   @media(max-width:900px){
     .hero-grid{grid-template-columns:1fr;}
@@ -609,31 +620,31 @@
 
     <div class="pf-grid" id="pfGrid">
       <!-- academic -->
-      <div class="pf-card" data-cat="academic"><div><div class="top"><span>2026</span><span>5월 · 경주</span></div><h4>아시아수의안과학회</h4></div><div class="cat">학술대회 · 학회</div></div>
-      <div class="pf-card" data-cat="academic"><div><div class="top"><span>2026</span><span>7월 · 경기</span></div><h4>경기수의컨퍼런스 (남부)</h4></div><div class="cat">학술대회 · 학회</div></div>
-      <div class="pf-card" data-cat="academic"><div><div class="top"><span>2026</span><span>10월 · 경주</span></div><h4>영남수의컨퍼런스</h4></div><div class="cat">학술대회 · 학회</div></div>
-      <div class="pf-card" data-cat="academic"><div><div class="top"><span>2025</span><span>7월 · 서울</span></div><h4>한국동물병원협회(KAHA) 출범식</h4></div><div class="cat">학술대회 · 학회</div></div>
-      <div class="pf-card" data-cat="academic"><div><div class="top"><span>2026</span><span>2월 · 송도</span></div><h4>한국동물병원협회(KAHA) 컨퍼런스</h4></div><div class="cat">학술대회 · 학회</div></div>
-      <div class="pf-card" data-cat="academic"><div><div class="top"><span>2027</span><span>2월 (준비 중)</span></div><h4>한국동물병원협회(KAHA) 컨퍼런스</h4></div><div class="cat">학술대회 · 학회</div></div>
-      <div class="pf-card" data-cat="academic"><div><div class="top"><span>2025</span><span>8월 · 대구</span></div><h4>한국수의영상의학회 연례학술대회</h4></div><div class="cat">학술대회 · 학회</div></div>
-      <div class="pf-card" data-cat="academic"><div><div class="top"><span>2025</span><span>5월 · 시흥</span></div><h4>한국임상수의학회</h4></div><div class="cat">학술대회 · 학회</div></div>
-      <div class="pf-card" data-cat="academic"><div><div class="top"><span>2024</span><span>5월 · 시흥</span></div><h4>한국임상수의학회</h4></div><div class="cat">학술대회 · 학회</div></div>
-      <div class="pf-card" data-cat="academic"><div><div class="top"><span>2025</span><span>11월 · 서울</span></div><h4>한국수의마취통증의학회</h4></div><div class="cat">학술대회 · 학회</div></div>
-      <div class="pf-card" data-cat="academic"><div><div class="top"><span>2024</span><span>11월</span></div><h4>한국수의영상의학회 (RO Conference)</h4></div><div class="cat">학술대회 · 학회</div></div>
+      <div class="pf-card" data-cat="academic" data-key="p01"><div><div class="top"><span>2026</span><span>5월 · 경주</span></div><h4>아시아수의안과학회</h4></div><div class="cat">학술대회 · 학회</div></div>
+      <div class="pf-card" data-cat="academic" data-key="p02"><div><div class="top"><span>2026</span><span>7월 · 경기</span></div><h4>경기수의컨퍼런스 (남부)</h4></div><div class="cat">학술대회 · 학회</div></div>
+      <div class="pf-card" data-cat="academic" data-key="p03"><div><div class="top"><span>2026</span><span>10월 · 경주</span></div><h4>영남수의컨퍼런스</h4></div><div class="cat">학술대회 · 학회</div></div>
+      <div class="pf-card" data-cat="academic" data-key="p04"><div><div class="top"><span>2025</span><span>7월 · 서울</span></div><h4>한국동물병원협회(KAHA) 출범식</h4></div><div class="cat">학술대회 · 학회</div></div>
+      <div class="pf-card" data-cat="academic" data-key="p05"><div><div class="top"><span>2026</span><span>2월 · 송도</span></div><h4>한국동물병원협회(KAHA) 컨퍼런스</h4></div><div class="cat">학술대회 · 학회</div></div>
+      <div class="pf-card" data-cat="academic" data-key="p06"><div><div class="top"><span>2027</span><span>2월 (준비 중)</span></div><h4>한국동물병원협회(KAHA) 컨퍼런스</h4></div><div class="cat">학술대회 · 학회</div></div>
+      <div class="pf-card" data-cat="academic" data-key="p07"><div><div class="top"><span>2025</span><span>8월 · 대구</span></div><h4>한국수의영상의학회 연례학술대회</h4></div><div class="cat">학술대회 · 학회</div></div>
+      <div class="pf-card" data-cat="academic" data-key="p08"><div><div class="top"><span>2025</span><span>5월 · 시흥</span></div><h4>한국임상수의학회</h4></div><div class="cat">학술대회 · 학회</div></div>
+      <div class="pf-card" data-cat="academic" data-key="p09"><div><div class="top"><span>2024</span><span>5월 · 시흥</span></div><h4>한국임상수의학회</h4></div><div class="cat">학술대회 · 학회</div></div>
+      <div class="pf-card" data-cat="academic" data-key="p10"><div><div class="top"><span>2025</span><span>11월 · 서울</span></div><h4>한국수의마취통증의학회</h4></div><div class="cat">학술대회 · 학회</div></div>
+      <div class="pf-card" data-cat="academic" data-key="p11"><div><div class="top"><span>2024</span><span>11월</span></div><h4>한국수의영상의학회 (RO Conference)</h4></div><div class="cat">학술대회 · 학회</div></div>
 
       <!-- anniversary/institution -->
-      <div class="pf-card" data-cat="anniv"><div><div class="top"><span>2024</span><span>4월 · 대구</span></div><h4>경북대학교 수의과대학 70주년 기념행사</h4></div><div class="cat">기관 · 기념행사</div></div>
-      <div class="pf-card" data-cat="anniv"><div><div class="top"><span>2025</span><span>10월 · 진주</span></div><h4>경상대학교 수의과대학 70주년 기념행사</h4></div><div class="cat">기관 · 기념행사</div></div>
-      <div class="pf-card" data-cat="anniv"><div><div class="top"><span>2026</span><span>11월 · 구미</span></div><h4>경상북도수의사회 70주년 기념행사</h4></div><div class="cat">기관 · 기념행사</div></div>
-      <div class="pf-card" data-cat="anniv"><div><div class="top"><span>2024</span><span>대구</span></div><h4>대구시 수의사의 날</h4></div><div class="cat">기관 · 기념행사</div></div>
-      <div class="pf-card" data-cat="anniv"><div><div class="top"><span>2025</span><span>대구</span></div><h4>대구시수의사회 수의사의 밤</h4></div><div class="cat">기관 · 기념행사</div></div>
+      <div class="pf-card" data-cat="anniv" data-key="p12"><div><div class="top"><span>2024</span><span>4월 · 대구</span></div><h4>경북대학교 수의과대학 70주년 기념행사</h4></div><div class="cat">기관 · 기념행사</div></div>
+      <div class="pf-card" data-cat="anniv" data-key="p13"><div><div class="top"><span>2025</span><span>10월 · 진주</span></div><h4>경상대학교 수의과대학 70주년 기념행사</h4></div><div class="cat">기관 · 기념행사</div></div>
+      <div class="pf-card" data-cat="anniv" data-key="p14"><div><div class="top"><span>2026</span><span>11월 · 구미</span></div><h4>경상북도수의사회 70주년 기념행사</h4></div><div class="cat">기관 · 기념행사</div></div>
+      <div class="pf-card" data-cat="anniv" data-key="p15"><div><div class="top"><span>2024</span><span>대구</span></div><h4>대구시 수의사의 날</h4></div><div class="cat">기관 · 기념행사</div></div>
+      <div class="pf-card" data-cat="anniv" data-key="p16"><div><div class="top"><span>2025</span><span>대구</span></div><h4>대구시수의사회 수의사의 밤</h4></div><div class="cat">기관 · 기념행사</div></div>
 
       <!-- gov -->
-      <div class="pf-card" data-cat="gov"><div><div class="top"><span>2024</span><span>10월 · 안동</span></div><h4>세계인문도시네트워크</h4></div><div class="cat">관공서 · 정책행사</div></div>
-      <div class="pf-card" data-cat="gov"><div><div class="top"><span>2025</span><span>9월 · 대구</span></div><h4>대구 MICE 얼라이언스 발대식</h4></div><div class="cat">관공서 · 정책행사</div></div>
+      <div class="pf-card" data-cat="gov" data-key="p17"><div><div class="top"><span>2024</span><span>10월 · 안동</span></div><h4>세계인문도시네트워크</h4></div><div class="cat">관공서 · 정책행사</div></div>
+      <div class="pf-card" data-cat="gov" data-key="p18"><div><div class="top"><span>2025</span><span>9월 · 대구</span></div><h4>대구 MICE 얼라이언스 발대식</h4></div><div class="cat">관공서 · 정책행사</div></div>
 
       <!-- corp/local -->
-      <div class="pf-card" data-cat="corp"><div><div class="top"><span>2026</span><span>6월 · 서울</span></div><h4>CCC 성과공유회</h4></div><div class="cat">기업 · 지역 프로그램</div></div>
+      <div class="pf-card" data-cat="corp" data-key="p19"><div><div class="top"><span>2026</span><span>6월 · 서울</span></div><h4>CCC 성과공유회</h4></div><div class="cat">기업 · 지역 프로그램</div></div>
     </div>
   </div>
 </section>
@@ -770,6 +781,22 @@
   </div>
 </div>
 
+<!-- PROJECT DETAIL MODAL -->
+<div class="modal-overlay" id="detailOverlay">
+  <div class="modal-box detail-box" role="dialog" aria-modal="true" aria-labelledby="detailTitleKr">
+    <button class="modal-close" id="closeDetail" aria-label="닫기">✕</button>
+    <span class="eyebrow" id="detailCat">Project</span>
+    <h3 id="detailTitleKr"></h3>
+    <p class="detail-en" id="detailTitleEn"></p>
+    <div class="detail-rows">
+      <div class="detail-row"><span class="k">개최 일자</span><span class="v" id="detailDate"></span></div>
+      <div class="detail-row"><span class="k">장소</span><span class="v" id="detailPlace"></span></div>
+      <div class="detail-row"><span class="k">참가자 규모</span><span class="v" id="detailScale"></span></div>
+    </div>
+    <p class="detail-source" id="detailSource"></p>
+  </div>
+</div>
+
 <script>
   const buttons = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('.pf-card');
@@ -823,6 +850,50 @@
     const mailto = 'mailto:yobi@inycom.co.kr?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     window.location.href = mailto;
   });
+  // Project detail modal
+  const projectDetails = {
+    p01: { cat: '학술대회 · 학회', kr: '아시아수의안과학회', en: '', date: '2026년 5월 (예정)', place: '경주', scale: '보도자료 발표 전 (개최 예정)', src: '' },
+    p02: { cat: '학술대회 · 학회', kr: '경기수의컨퍼런스 (남부)', en: '', date: '2026년 7월 (예정)', place: '경기', scale: '보도자료 발표 전 (개최 예정)', src: '' },
+    p03: { cat: '학술대회 · 학회', kr: '영남수의컨퍼런스', en: '', date: '2026년 10월 (예정)', place: '경주', scale: '보도자료 발표 전 (개최 예정)', src: '' },
+    p04: { cat: '학술대회 · 학회', kr: '한국동물병원협회(KAHA) 17대 집행부 출범식', en: '', date: '2025년 7월 6일(일)', place: 'JW 메리어트 동대문스퀘어 서울', scale: '이사·임원 등 100여 명', src: '출처: 데일리벳' },
+    p05: { cat: '학술대회 · 학회', kr: '한국동물병원협회(KAHA) 2026년도 정기총회', en: '', date: '2026년 2월 21일(토)', place: '인천 송도컨벤시아', scale: '이사·임원 참석 (보도자료에 세부 인원 미기재)', src: '출처: 데일리벳' },
+    p06: { cat: '학술대회 · 학회', kr: '한국동물병원협회(KAHA) 컨퍼런스', en: '', date: '2027년 2월 (준비 중)', place: '미정', scale: '보도자료 발표 전 (개최 예정)', src: '' },
+    p07: { cat: '학술대회 · 학회', kr: '한국수의영상의학회 연례학술대회', en: '', date: '2025년 8월 (사내 기록 기준, 보도자료 확인 중)', place: '대구', scale: '확인 중', src: '보도자료 확인 전 — 사내 자료 기준' },
+    p08: { cat: '학술대회 · 학회', kr: '한국임상수의학회 춘계학술대회', en: '', date: '2025년 5월 17일(토)~18일(일)', place: '서울대학교 시흥캠퍼스 연수동&컨벤션센터', scale: '약 700여 명 (구두발표 159건·포스터 101건)', src: '출처: 데일리개원' },
+    p09: { cat: '학술대회 · 학회', kr: '한국임상수의학회 40주년 기념 춘계학술대회', en: '', date: '2024년 5월 25일(토)~26일(일)', place: '서울대학교 시흥캠퍼스 연수동&컨벤션센터', scale: '역대 최대 규모 (구체적 인원 미기재)', src: '출처: 데일리벳·데일리개원' },
+    p10: { cat: '학술대회 · 학회', kr: '한국수의마취통증의학회 창립총회 및 학술대회', en: '', date: '2025년 11월 23일 (사내 기록 기준, 보도자료 확인 중)', place: '서울대학교', scale: '확인 중', src: '보도자료 확인 전 — 사내 자료 기준' },
+    p11: { cat: '학술대회 · 학회', kr: '한국수의영상의학회 RO Conference', en: '', date: '2024년 11월 (사내 기록 기준, 보도자료 확인 중)', place: '확인 중', scale: '확인 중', src: '보도자료 확인 전 — 사내 자료 기준' },
+    p12: { cat: '기관 · 기념행사', kr: '경북대학교 수의과대학 개교 70주년 기념행사', en: '', date: '2024년 4월 1일(월)', place: '수성스퀘어(호텔수성) 컨벤션홀, 대구', scale: '교직원·재학생·동문 등 600여 명', src: '출처: 데일리벳·아시아투데이' },
+    p13: { cat: '기관 · 기념행사', kr: '경상국립대학교 수의과대학 설립 70주년 기념행사', en: '', date: '2025년 10월 23일(목) 오후 5시', place: '경상국립대 칠암캠퍼스 100주년 기념관, 진주', scale: '약 300여 명', src: '출처: 국제뉴스·이뉴스투데이' },
+    p14: { cat: '기관 · 기념행사', kr: '경상북도수의사회 70주년 기념행사', en: '', date: '2026년 11월 (예정)', place: '구미', scale: '보도자료 발표 전 (개최 예정)', src: '' },
+    p15: { cat: '기관 · 기념행사', kr: '대구시 수의사의 날', en: '', date: '2024년 (정확한 일자 보도자료 확인 중)', place: '대구', scale: '확인 중', src: '보도자료 확인 전' },
+    p16: { cat: '기관 · 기념행사', kr: '2025년 대구시 수의사의 날 (대구시수의사회 송년의 밤)', en: '', date: '2025년 12월 10일(수)', place: '호텔라온제나, 대구', scale: '선거권자 449명 중 260명 참석', src: '출처: 데일리벳' },
+    p17: { cat: '관공서 · 정책행사', kr: '세계인문도시네트워크 창립총회', en: 'World Humanistic Cities Network (WHCN) Inaugural Assembly', date: '2024년 10월 31일 ~ 11월 2일', place: '안동국제컨벤션센터(ADCO)', scale: '국내 4개 도시·국외 23개 도시 등 27개 도시 대표단', src: '출처: 경북일보·안동인터넷뉴스' },
+    p18: { cat: '관공서 · 정책행사', kr: '대구 MICE 얼라이언스 발대식', en: '', date: '2025년 9월 9일(화)', place: '대구 엑스코(EXCO) 서관', scale: '60여 개 회원사', src: '출처: 아시아투데이·헤럴드경제' },
+    p19: { cat: '기업 · 지역 프로그램', kr: 'CCC 성과공유회', en: '', date: '2026년 6월 (사내 기록 기준)', place: '서울', scale: '비공개 기업 행사 (보도자료 없음)', src: '비공개 기업 행사로 보도자료가 발행되지 않았습니다.' },
+  };
+
+  const detailOverlay = document.getElementById('detailOverlay');
+  const closeDetailBtn = document.getElementById('closeDetail');
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const d = projectDetails[card.dataset.key];
+      if (!d) return;
+      document.getElementById('detailCat').textContent = d.cat;
+      document.getElementById('detailTitleKr').textContent = d.kr;
+      const enEl = document.getElementById('detailTitleEn');
+      if (d.en) { enEl.textContent = d.en; enEl.style.display = 'block'; }
+      else { enEl.textContent = ''; enEl.style.display = 'none'; }
+      document.getElementById('detailDate').textContent = d.date;
+      document.getElementById('detailPlace').textContent = d.place;
+      document.getElementById('detailScale').textContent = d.scale;
+      document.getElementById('detailSource').textContent = d.src;
+      detailOverlay.classList.add('open');
+    });
+  });
+  closeDetailBtn.addEventListener('click', () => detailOverlay.classList.remove('open'));
+  detailOverlay.addEventListener('click', (e) => { if (e.target === detailOverlay) detailOverlay.classList.remove('open'); });
+
   // Work tabs
   const workTabs = document.querySelectorAll('.work-tab');
   const workPanels = document.querySelectorAll('.work-panel');
