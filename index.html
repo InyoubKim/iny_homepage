@@ -729,6 +729,47 @@
   </div>
 </footer>
 
+
+<!-- INQUIRY MODAL -->
+<div class="modal-overlay" id="inquiryOverlay">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="inquiryTitle">
+    <button class="modal-close" id="closeInquiry" aria-label="닫기">✕</button>
+    <span class="eyebrow">Project Inquiry</span>
+    <h3 id="inquiryTitle">프로젝트 진행 문의</h3>
+    <p class="modal-desc">아래 내용을 남겨주시면 담당자 이메일(yobi@inycom.co.kr)로 전달됩니다.</p>
+    <form id="inquiryForm">
+      <div class="f-row">
+        <label for="f-name">담당자명 *</label>
+        <input type="text" id="f-name" required>
+      </div>
+      <div class="f-row">
+        <label for="f-org">소속 / 기관명</label>
+        <input type="text" id="f-org">
+      </div>
+      <div class="f-row two">
+        <div>
+          <label for="f-phone">연락처</label>
+          <input type="text" id="f-phone" placeholder="010-0000-0000">
+        </div>
+        <div>
+          <label for="f-email">이메일 *</label>
+          <input type="email" id="f-email" required>
+        </div>
+      </div>
+      <div class="f-row">
+        <label for="f-event">행사명 / 예상 일정</label>
+        <input type="text" id="f-event" placeholder="예: 2027년 상반기 학술대회">
+      </div>
+      <div class="f-row">
+        <label for="f-msg">문의 내용 *</label>
+        <textarea id="f-msg" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn primary" style="width:100%;text-align:center;">문의 보내기</button>
+      <p class="modal-note">‘문의 보내기’를 누르면 회신용 이메일 앱이 열리며, 내용을 확인한 뒤 보내기를 눌러주세요.</p>
+    </form>
+  </div>
+</div>
+
 <script>
   const buttons = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('.pf-card');
@@ -812,46 +853,5 @@
     }
   });
 </script>
-
-<!-- INQUIRY MODAL -->
-<div class="modal-overlay" id="inquiryOverlay">
-  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="inquiryTitle">
-    <button class="modal-close" id="closeInquiry" aria-label="닫기">✕</button>
-    <span class="eyebrow">Project Inquiry</span>
-    <h3 id="inquiryTitle">프로젝트 진행 문의</h3>
-    <p class="modal-desc">아래 내용을 남겨주시면 담당자 이메일(yobi@inycom.co.kr)로 전달됩니다.</p>
-    <form id="inquiryForm">
-      <div class="f-row">
-        <label for="f-name">담당자명 *</label>
-        <input type="text" id="f-name" required>
-      </div>
-      <div class="f-row">
-        <label for="f-org">소속 / 기관명</label>
-        <input type="text" id="f-org">
-      </div>
-      <div class="f-row two">
-        <div>
-          <label for="f-phone">연락처</label>
-          <input type="text" id="f-phone" placeholder="010-0000-0000">
-        </div>
-        <div>
-          <label for="f-email">이메일 *</label>
-          <input type="email" id="f-email" required>
-        </div>
-      </div>
-      <div class="f-row">
-        <label for="f-event">행사명 / 예상 일정</label>
-        <input type="text" id="f-event" placeholder="예: 2027년 상반기 학술대회">
-      </div>
-      <div class="f-row">
-        <label for="f-msg">문의 내용 *</label>
-        <textarea id="f-msg" rows="4" required></textarea>
-      </div>
-      <button type="submit" class="btn primary" style="width:100%;text-align:center;">문의 보내기</button>
-      <p class="modal-note">‘문의 보내기’를 누르면 회신용 이메일 앱이 열리며, 내용을 확인한 뒤 보내기를 눌러주세요.</p>
-    </form>
-  </div>
-</div>
-
 </body>
 </html>
